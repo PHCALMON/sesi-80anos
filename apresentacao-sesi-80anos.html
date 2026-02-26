@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SESI 80 Anos | Storyboard - Video Wall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sesi-blue: #003DA5;
+    --sesi-blue-light: #1a5fc7;
+    --sesi-blue-dark: #002d7a;
+    --sesi-accent: #00A3E0;
+    --bg: #08080c;
+    --bg-card: #111118;
+    --text: #f0f0f5;
+    --text-dim: #8888a0;
+    --text-muted: #555570;
+    --border: #1e1e2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Nav ── */
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(8,8,12,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .topbar-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+  }
+
+  .topbar-logo strong {
+    color: var(--sesi-accent);
+  }
+
+  .topbar-right {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── Sections ── */
+  section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+  }
+
+  .inner {
+    max-width: 1300px;
+    width: 100%;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sesi-accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--sesi-accent);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 160px);
+    line-height: 0.88;
+    letter-spacing: -2px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.92;
+  }
+
+  .accent {
+    background: linear-gradient(135deg, var(--sesi-accent), #4dc9f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p { font-size: 16px; line-height: 1.7; color: var(--text-dim); }
+  p.lead { font-size: 20px; line-height: 1.6; color: var(--text); font-weight: 300; }
+
+  /* ── Cover ── */
+  #cover {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  #cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 20%, rgba(0,61,165,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(0,163,224,0.06) 0%, transparent 50%);
+  }
+
+  .cover-tag {
+    display: inline-block;
+    padding: 6px 18px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+
+  .cover-sub {
+    font-size: 18px;
+    color: var(--text-dim);
+    font-weight: 300;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-meta {
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── Board (full-width storyboard image) ── */
+  .board {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .board img {
+    width: 100%;
+    display: block;
+  }
+
+  .board-caption {
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .board-caption .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(0,163,224,0.2);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .board-caption h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .board-caption p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 700px;
+  }
+
+  /* ── Grid ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  /* ── Timeline ── */
+  .tl {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .tl::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--sesi-accent), var(--sesi-blue), rgba(0,163,224,0.1));
+  }
+
+  .tl-item {
+    padding: 0 0 20px 20px;
+    position: relative;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sesi-accent);
+    box-shadow: 0 0 12px rgba(0,163,224,0.4);
+  }
+
+  .tl-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--sesi-accent);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .tl-text {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ── Specs pills ── */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .pill {
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(0,163,224,0.08);
+    color: var(--sesi-accent);
+    border: 1px solid rgba(0,163,224,0.15);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Palette ── */
+  .palette-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .swatch {
+    flex: 1;
+    height: 56px;
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 60px 0;
+  }
+
+  /* ── Approval block ── */
+  .approval-box {
+    background: var(--bg-card);
+    border: 2px solid var(--sesi-blue);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .approval-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .approval-box p {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .approval-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .approval-field {
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    text-align: left;
+  }
+
+  .approval-field .lbl {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .approval-field .val {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Animations ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .d1 { transition-delay: 0.1s; }
+  .d2 { transition-delay: 0.2s; }
+  .d3 { transition-delay: 0.3s; }
+
+  /* ── Print ── */
+  @media print {
+    .topbar { display: none; }
+    section { min-height: auto; page-break-inside: avoid; padding: 40px 32px; }
+    .board img { max-height: 400px; object-fit: contain; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 100px 20px 60px; }
+    .topbar { padding: 16px 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .board-caption { flex-direction: column; gap: 12px; }
+    .cover-meta { flex-direction: column; gap: 12px; }
+    .approval-fields { grid-template-columns: 1fr; }
+  }
+</style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-logo"><strong>SESI</strong> 80 ANOS</div>
+  <div class="topbar-right">Storyboard para aprovacao</div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CAPA -->
+<!-- ════════════════════════════════════════════ -->
+<section id="cover">
+  <div class="inner" style="text-align:center; position:relative; z-index:2;">
+    <div class="cover-tag reveal">Video Wall &mdash; Storyboard</div>
+    <h1 class="reveal d1">SESI<br><span class="accent">80 ANOS</span></h1>
+    <p class="cover-sub reveal d2">Proposta visual para o painel de LED do evento comemorativo</p>
+    <div class="cover-meta reveal d3">
+      <span>E2 Studio</span>
+      <span>Fevereiro 2026</span>
+      <span>1344 x 840px &bull; MPEG4</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CONCEITO (curto) -->
+<!-- ════════════════════════════════════════════ -->
+<section id="conceito" style="min-height:auto; padding-top:80px; padding-bottom:60px;">
+  <div class="inner">
+    <div class="grid-2">
+      <div>
+        <div class="label reveal">Conceito</div>
+        <h2 class="reveal d1">Retrospectiva<br>em <span class="accent">Movimento</span></h2>
+      </div>
+      <div>
+        <p class="lead reveal d1" style="margin-top:16px;">
+          O video percorre uma timeline dinamica &mdash; do presente de volta ate 1946 &mdash; revelando os marcos que construiram o SESI.
+        </p>
+        <p class="reveal d2" style="margin-top:16px;">
+          Linguagem visual moderna, tipografia impactante e transicoes rapidas para capturar a atencao do publico jovem no painel de LED. Sem locucao &mdash; tudo comunica pelo visual. O video roda em loop continuo.
+        </p>
+        <div class="pills reveal d3">
+          <span class="pill">Motion Graphics</span>
+          <span class="pill">Lettering + Fotos</span>
+          <span class="pill">Sem locucao</span>
+          <span class="pill">Loop continuo</span>
+          <span class="pill">Publico 14-17 anos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- STORYBOARD - FRAME 01 -->
+<!-- ════════════════════════════════════════════ -->
+<section id="frames" style="min-height:auto; padding-top:40px; padding-bottom:20px;">
+  <div class="inner">
+    <div class="label reveal">Storyboard</div>
+    <h2 class="reveal d1" style="margin-bottom:40px;">Sequencia<br>do Video Wall</h2>
+
+    <div class="board reveal d2">
+      <img src="frame-01.png" alt="Frame 01 - Abertura">
+      <div class="board-caption">
+        <div class="num">01</div>
+        <div>
+          <h4>Abertura &mdash; Titulo</h4>
+          <p>Tela de abertura com o logo SESI e o titulo "Video Wall &mdash; 80 Anos do SESI". Estabelece a identidade visual e o tom da peca. Fundo com gradiente na paleta institucional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAME 02 -->
+<section style="min-height:auto; padding-top:20px; padding-bottom:20px;">
+  <div class="inner">
+    <div class="board reveal">
+      <img src="frame-02.png" alt="Frame 02 - Scroll e mergulho">
+      <div class="board-caption">
+        <div class="num">02</div>
+        <div>
+          <h4>Scroll Inicial &rarr; Mergulho no Primeiro Evento</h4>
+          <p><strong>Frame 01:</strong> Uma pessoa desliza o dedo no celular &mdash; esse gesto dispara a timeline, conectando o digital ao historico. <strong>Frame 02:</strong> A camera mergulha na primeira imagem e o conteudo historico preenche toda a tela.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAME 03 -->
+<section style="min-height:auto; padding-top:20px; padding-bottom:20px;">
+  <div class="inner">
+    <div class="board reveal">
+      <img src="frame-03.png" alt="Frame 03 - Timeline continua">
+      <div class="board-caption">
+        <div class="num">03</div>
+        <div>
+          <h4>Timeline Continua &rarr; Marcos Historicos</h4>
+          <p><strong>Frame 03:</strong> Passamos por uma timeline continua e linear com transicoes rapidas, tipografia bold e grafismos &mdash; diminuindo o tempo de leitura e aumentando o dinamismo. <strong>Frame 04:</strong> A camera vai dando enfase nos acontecimentos dos 80 anos do SESI.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAME 04 -->
+<section style="min-height:auto; padding-top:20px; padding-bottom:40px;">
+  <div class="inner">
+    <div class="board reveal">
+      <img src="frame-04.png" alt="Frame 04 - Zoom out e loop">
+      <div class="board-caption">
+        <div class="num">04</div>
+        <div>
+          <h4>Zoom Out Final &rarr; Loop</h4>
+          <p><strong>Frame 05:</strong> Zoom out na ultima tela/evento, saindo da tela cheia e revelando a grandeza da trajetoria. <strong>Frame 06:</strong> O filme termina como comecou, criando um loop para o inicio do movimento &mdash; exibicao continua no painel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CONTEUDO DA TIMELINE -->
+<!-- ════════════════════════════════════════════ -->
+<section id="conteudo" style="min-height:auto; padding-top:60px; padding-bottom:60px;">
+  <div class="inner">
+    <div class="label reveal">Conteudo</div>
+    <h2 class="reveal d1" style="margin-bottom:12px;">Marcos dos<br><span class="accent">80 Anos</span></h2>
+    <p class="reveal d2" style="margin-bottom:40px; max-width:600px;">
+      Eventos que serao destacados na timeline do video. O material fotografico sera fornecido pelo SESI.
+    </p>
+
+    <div class="grid-2 reveal d3">
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-year">1930</div>
+          <div class="tl-text">Inicio da industrializacao no Brasil</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1945</div>
+          <div class="tl-text">Carta da Paz &mdash; marco em favor da justica social</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1946</div>
+          <div class="tl-text">Criacao do SESI &mdash; primeira instituicao privada de servicos assistenciais aos trabalhadores</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1946</div>
+          <div class="tl-text">Postos do SESI ofertam alimentacao a baixo custo</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1947</div>
+          <div class="tl-text">Primeiros jogos esportivos operarios</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1947</div>
+          <div class="tl-text">Cursos de alfabetizacao de adultos &mdash; Cursos Populares</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Final Anos 40</div>
+          <div class="tl-text">Primeiros nucleos educacionais e atendimento as familias</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1950</div>
+          <div class="tl-text">Desenvolvimento da frente de cultura</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">1953</div>
+          <div class="tl-text">1a Olimpiada Operaria</div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-year">Anos 50-60</div>
+          <div class="tl-text">Expansao para alcançar todo o pais</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Decada de 80</div>
+          <div class="tl-text">Presenca em 600 municipios com 2.300 unidades</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Anos 90</div>
+          <div class="tl-text">Criacao dos Centros de Atividades (CATs)</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2000s</div>
+          <div class="tl-text">EJA &mdash; Educacao de Jovens e Adultos, maior marca do SESI</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2012</div>
+          <div class="tl-text">Festival SESI de Educacao &mdash; 13 anos de inovacao tecnologica</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-text">SESI: Maior Rede Privada de Educacao do Brasil</div>
+        </div>
+
+        <div style="margin-top:32px; padding: 20px 24px; background:var(--bg-card); border-radius:12px; border:1px solid var(--border);">
+          <p style="font-size:12px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Dados pendentes do cliente</p>
+          <p style="font-size:14px; color:var(--text-dim);">
+            XX escolas<br>
+            + de XX mil alunos<br>
+            + de XX mil professores
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- DIRECAO DE ARTE -->
+<!-- ════════════════════════════════════════════ -->
+<section id="arte" style="min-height:auto; padding-top:60px; padding-bottom:60px;">
+  <div class="inner">
+    <div class="label reveal">Direcao de Arte</div>
+    <h2 class="reveal d1" style="margin-bottom:32px;">Look & Feel</h2>
+
+    <div class="grid-2 reveal d2">
+      <div>
+        <p class="lead">
+          Estetica editorial com raizes historicas. Tipografia bold, fotos em camadas e transicoes cinematograficas.
+        </p>
+        <p style="margin-top:16px;">
+          Referencia visual: timelines historicas estilo Vox Explainers, collage editorial, motion graphics com dados e datas em destaque. A paleta segue a identidade institucional do SESI.
+        </p>
+
+        <p style="margin-top:24px; font-size:13px; font-weight:600; color:var(--text); letter-spacing:2px; text-transform:uppercase;">Paleta de cores</p>
+        <div class="palette-row">
+          <div class="swatch" style="background:#003DA5; color:rgba(255,255,255,0.7);">Azul SESI</div>
+          <div class="swatch" style="background:#00A3E0; color:rgba(255,255,255,0.7);">Azul claro</div>
+          <div class="swatch" style="background:#0a0a1a; color:rgba(255,255,255,0.3);">Fundo</div>
+          <div class="swatch" style="background:#f0f0f5; color:rgba(0,0,0,0.4);">Texto</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="grid-3" style="gap:12px;">
+          <div class="card" style="text-align:center; padding:20px;">
+            <p style="font-size:13px; font-weight:600; color:var(--text);">Tipografia</p>
+            <p style="margin-top:4px;">Bold, impactante, numeros grandes</p>
+          </div>
+          <div class="card" style="text-align:center; padding:20px;">
+            <p style="font-size:13px; font-weight:600; color:var(--text);">Fotos</p>
+            <p style="margin-top:4px;">Historicas, em camadas, com grafismos</p>
+          </div>
+          <div class="card" style="text-align:center; padding:20px;">
+            <p style="font-size:13px; font-weight:600; color:var(--text);">Transicoes</p>
+            <p style="margin-top:4px;">Rapidas, fluidas, cinematograficas</p>
+          </div>
+        </div>
+        <div style="margin-top:16px; padding:20px; background:var(--bg-card); border-radius:12px; border:1px solid var(--border);">
+          <p style="font-size:12px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Identidade</p>
+          <p style="font-size:14px; color:var(--text-dim);">
+            Logo SESI 80 Anos (sem "Conselho Nacional")<br>
+            Paleta azul institucional &mdash; sem vermelho<br>
+            Formato: 1344 x 840px em MPEG4
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- APROVACAO -->
+<!-- ════════════════════════════════════════════ -->
+<section id="aprovacao" style="min-height:auto; padding-top:60px; padding-bottom:80px;">
+  <div class="inner">
+    <div class="label reveal">Proximos Passos</div>
+    <h2 class="reveal d1" style="margin-bottom:16px;">Para <span class="accent">Seguirmos</span></h2>
+    <p class="reveal d2" style="max-width:600px; margin-bottom:32px;">
+      Precisamos da aprovacao deste storyboard e do material fotografico para iniciar a producao.
+    </p>
+
+    <div class="grid-3 reveal d3">
+      <div class="card">
+        <h4>1. Aprovar o conceito</h4>
+        <p>Validar a direcao criativa: timeline retrospectiva, linguagem visual e paleta de cores.</p>
+      </div>
+      <div class="card">
+        <h4>2. Enviar material</h4>
+        <p>Fotos historicas do SESI, numeros atualizados (escolas, alunos, professores) e logos em alta.</p>
+      </div>
+      <div class="card">
+        <h4>3. Prazos</h4>
+        <p>Roteiro + storyboard final: <strong style="color:var(--text);">02/Mar</strong><br>Entrega do video: <strong style="color:var(--text);">05/Mar</strong></p>
+      </div>
+    </div>
+
+    <div class="approval-box reveal d3">
+      <h3>Aprovacao do Storyboard</h3>
+      <p>Com a aprovacao, iniciamos imediatamente a producao do video wall e da vinheta comemorativa dos 80 anos.</p>
+      <div class="approval-fields">
+        <div class="approval-field">
+          <div class="lbl">Aprovado por</div>
+          <div class="val">____________________</div>
+        </div>
+        <div class="approval-field">
+          <div class="lbl">Data</div>
+          <div class="val">_____ / _____ / 2026</div>
+        </div>
+        <div class="approval-field" style="grid-column: span 2;">
+          <div class="lbl">Observacoes</div>
+          <div class="val">____________________________________________</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>E2 Studio &copy; 2026</span>
+  <span>SESI 80 Anos &mdash; Storyboard v1</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
